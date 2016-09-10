@@ -8,7 +8,11 @@ class QuestionsController < ApplicationController
 				)
 	end
 
-	def create
+	def create(question)
 		binding.pry
+		Question.create 
+			:title => question.title,
+			:correct_answer_id => 3
+
 	end
 end
