@@ -8,11 +8,9 @@ class QuestionsController < ApplicationController
 				)
 	end
 
-	def create(question)
-		binding.pry
-		Question.create 
-			:title => question.title,
-			:correct_answer_id => 3
 
+	def create(question)
+		puts (question)
+		#Question.create :title => question.title, :correct_answer_id => question.correct_answer_id
 	end
 end
