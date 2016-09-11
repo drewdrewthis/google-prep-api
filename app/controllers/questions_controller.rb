@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
 	def index
-		binding.pry
+		#binding.pry
 		render json: 
 			Question.all.includes(:answers)
 				.as_json(
@@ -8,9 +8,17 @@ class QuestionsController < ApplicationController
 				)
 	end
 
-
-	def create(question)
-		puts (question)
-		#Question.create :title => question.title, :correct_answer_id => question.correct_answer_id
+	def create
+		#binding.pry
+		@question = Question.new(:title => params[:title], :correct_answer_id => params[:correct_answer])
+		if @question.save
+			puts "New question create successfully. Question id is: #{@question.id}"
+			params[:answers].each do |answer|
+				Answer.create :title => answer, :question_id => @question.id
+			end
+		else
+			puts "Question didn't save"
+		end
+		#Question.create :title => params[:title], :correct_answer_id => params[:correct_answer]
 	end
 end

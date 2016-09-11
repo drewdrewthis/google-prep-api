@@ -7,10 +7,13 @@ gem 'rails-api'
 
 gem 'spring', :group => :development
 
-
 gem 'pg'
 
 gem 'pry'
+
+# Copied from https://github.com/cyu/rack-cors
+# Allows CORS work around to process OPTIONS and allow for PUT (?)
+gem 'rack-cors', :require => 'rack/cors'
 
 
 

@@ -11,5 +11,27 @@ module QuestionsApi
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
+
+
+    # Copied from https://github.com/cyu/rack-cors
+    # Allows CORS work around to process OPTIONS and allow for PUT (?)
+    config.middleware.insert_before 0, "Rack::Cors" do
+      allow do
+        origins '*'
+        resource '*', :headers => :any, :methods => [:get, :post, :options]
+      end
+    end
+
+    # Rails 5
+
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins '*'
+        resource '*', :headers => :any, :methods => [:get, :post, :options]
+      end
+    end
+    # End Copy
+
+
   end
 end
