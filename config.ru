@@ -3,7 +3,7 @@
 require_relative 'config/environment'
 
 # Copied from https://github.com/cyu/rack-cors
-# Allows CORS work around to process OPTIONS and allow for PUT (?)
+# Allows CORS work around to process OPTIONS and allow for POST (?)
 use Rack::Cors do
   allow do
     origins 'localhost:3000', '127.0.0.1:3000',
@@ -22,6 +22,7 @@ use Rack::Cors do
   allow do
     origins '*'
     resource '/public/*', :headers => :any, :methods => :get
+    # resource '/public/*', :headers => :any, :methods => :any (?)
   end
 end
 # End Copy
